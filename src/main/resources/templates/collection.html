@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection | Java Hero Cards</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/cards.css}">
+    <link rel="stylesheet" th:href="@{/css/animations.css}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-brand">
+        <a th:href="@{/welcome}" class="brand-link">
+            <span class="brand-icon">⚔️</span>
+            <span class="brand-name">Java Hero Cards</span>
+        </a>
+    </div>
+    <div class="nav-links">
+        <a th:href="@{/roadmap}" class="nav-link">
+            <span class="nav-icon">🗺️</span> Roadmap
+        </a>
+        <a th:href="@{/collection}" class="nav-link nav-link--active">
+            <span class="nav-icon">📚</span> Collection
+        </a>
+    </div>
+</nav>
+
+<main class="main-content">
+    <div class="page-header fade-in">
+        <h1 class="page-title">📚 Your Collection</h1>
+        <div class="xp-display">
+            <span class="xp-icon">⭐</span>
+            <span class="xp-value" th:text="${playerProgress.xp}">0</span>
+            <span class="xp-label">XP</span>
+            <span class="xp-divider">|</span>
+            <span class="xp-count"
+                  th:text="${playerProgress.unlockedCount + ' / ' + allHeroes.size() + ' Heroes'}">
+                0 / 23 Heroes
+            </span>
+        </div>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-bar fade-in">
+        <button class="filter-btn filter-btn--active" data-filter="all">All</button>
+        <button class="filter-btn filter-btn--bronze" data-filter="bronze">🥉 Bronze</button>
+        <button class="filter-btn filter-btn--silver" data-filter="silver">🥈 Silver</button>
+        <button class="filter-btn filter-btn--gold" data-filter="gold">🥇 Gold</button>
+        <button class="filter-btn filter-btn--spring-master" data-filter="spring-master">🌱 Spring Master</button>
+    </div>
+
+    <!-- Cards by Path -->
+    <div class="collection-container">
+        <div th:each="entry : ${heroesByPath}" class="collection-section"
+             th:data-path="${entry.key.cssClass}">
+            <h2 class="collection-path-title"
+                th:classappend="${entry.key.cssClass}">
+                <span th:switch="${entry.key.name()}">
+                    <span th:case="'BRONZE'">🥉</span>
+                    <span th:case="'SILVER'">🥈</span>
+                    <span th:case="'GOLD'">🥇</span>
+                    <span th:case="'SPRING_MASTER'">🌱</span>
+                </span>
+                <span th:text="${entry.key.displayName}">Path</span>
+            </h2>
+
+            <div class="collection-grid">
+                <div th:each="hero : ${entry.value}"
+                     class="hero-card-flip-wrapper"
+                     th:data-path="${entry.key.cssClass}">
+
+                    <!-- Unlocked Card with flip -->
+                    <div th:if="${playerProgress.isUnlocked(hero.id)}"
+                         class="flip-card"
+                         th:id="'card-' + ${hero.id}">
+                        <div class="flip-card-inner">
+                            <!-- Front -->
+                            <div class="flip-card-front hero-card unlocked"
+                                 th:classappend="${entry.key.cssClass}">
+                                <div class="hero-card-header">
+                                    <span class="hero-card-path-badge"
+                                          th:text="${entry.key.displayName}">Path</span>
+                                    <span class="hero-card-unlocked-badge">✅</span>
+                                </div>
+                                <div class="hero-card-body">
+                                    <h3 class="hero-card-name" th:text="${hero.name}">Hero</h3>
+                                    <p class="hero-card-tagline" th:text="${hero.tagline}">tagline</p>
+                                </div>
+                                <div class="flip-hint">Click to flip ↻</div>
+                            </div>
+                            <!-- Back -->
+                            <div class="flip-card-back hero-card unlocked"
+                                 th:classappend="${entry.key.cssClass}">
+                                <div class="hero-card-body hero-card-back-body">
+                                    <h4 th:text="${hero.name}">Hero</h4>
+                                    <p class="back-explanation" th:text="${hero.explanation}">Explanation</p>
+                                    <pre class="back-code"><code th:text="${hero.javaExample}">code</code></pre>
+                                </div>
+                                <a th:href="@{'/hero/' + ${hero.id} + '/learn'}"
+                                   class="btn btn-small btn-primary">Review</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Locked Card -->
+                    <div th:unless="${playerProgress.isUnlocked(hero.id)}"
+                         class="hero-card locked"
+                         th:classappend="${entry.key.cssClass}">
+                        <div class="locked-overlay">
+                            <span class="locked-icon">🔒</span>
+                        </div>
+                        <div class="hero-card-body locked-body">
+                            <h3 class="hero-card-name locked-name" th:text="${hero.name}">Hero</h3>
+                            <p class="hero-card-tagline locked-tagline">???</p>
+                        </div>
+                        <a th:href="@{'/hero/' + ${hero.id} + '/learn'}"
+                           class="btn btn-small btn-outline">Unlock</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <p>Java Hero Cards &mdash; Learn Java, one hero at a time.</p>
+</footer>
+
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/card-flip.js}"></script>
+</body>
+</html>

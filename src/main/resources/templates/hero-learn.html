@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${hero.name + ' | Java Hero Cards'}">Hero Learn</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/cards.css}">
+    <link rel="stylesheet" th:href="@{/css/animations.css}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-brand">
+        <a th:href="@{/welcome}" class="brand-link">
+            <span class="brand-icon">⚔️</span>
+            <span class="brand-name">Java Hero Cards</span>
+        </a>
+    </div>
+    <div class="nav-links">
+        <a th:href="@{/roadmap}" class="nav-link">
+            <span class="nav-icon">🗺️</span> Roadmap
+        </a>
+        <a th:href="@{/collection}" class="nav-link">
+            <span class="nav-icon">📚</span> Collection
+        </a>
+    </div>
+</nav>
+
+<main class="main-content">
+    <div class="learn-page fade-in">
+
+        <div class="learn-breadcrumb">
+            <a th:href="@{/roadmap}" class="breadcrumb-link">← Roadmap</a>
+            <span class="breadcrumb-sep">/</span>
+            <span th:text="${hero.learningPath.displayName}">Path</span>
+            <span class="breadcrumb-sep">/</span>
+            <span th:text="${hero.name}">Hero</span>
+        </div>
+
+        <div class="learn-layout">
+
+            <!-- Hero Card -->
+            <div class="hero-card-display">
+                <div class="hero-card"
+                     th:classappend="${hero.learningPath.cssClass + (playerProgress.isUnlocked(hero.id) ? ' unlocked' : ' locked')}">
+                    <div class="hero-card-header">
+                        <span class="hero-card-path-badge"
+                              th:text="${hero.learningPath.displayName}">Path</span>
+                        <span class="hero-card-unlocked-badge"
+                              th:if="${playerProgress.isUnlocked(hero.id)}">✅ Unlocked</span>
+                        <span class="hero-card-locked-badge"
+                              th:unless="${playerProgress.isUnlocked(hero.id)}">🔒 Locked</span>
+                    </div>
+                    <div class="hero-card-body">
+                        <h1 class="hero-card-name" th:text="${hero.name}">Hero Name</h1>
+                        <p class="hero-card-tagline" th:text="${hero.tagline}">Tagline</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Content -->
+            <div class="hero-content">
+                <div class="hero-explanation-box">
+                    <h2 class="content-heading">What is it?</h2>
+                    <p class="hero-explanation" th:text="${hero.explanation}">Explanation</p>
+                </div>
+
+                <div class="hero-code-box">
+                    <h2 class="content-heading">Code Example</h2>
+                    <pre class="code-block"><code th:text="${hero.javaExample}">// code</code></pre>
+                </div>
+
+                <div class="learn-actions">
+                    <a th:href="@{/roadmap}" class="btn btn-secondary">← Back to Roadmap</a>
+                    <a th:href="@{'/hero/' + ${hero.id} + '/quiz'}"
+                       class="btn btn-primary">
+                        Take the Quiz →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <p>Java Hero Cards &mdash; Learn Java, one hero at a time.</p>
+</footer>
+
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/card-flip.js}"></script>
+</body>
+</html>

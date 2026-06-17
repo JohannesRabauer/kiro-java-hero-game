@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Hero Cards</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/cards.css}">
+    <link rel="stylesheet" th:href="@{/css/animations.css}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-brand">
+        <a th:href="@{/welcome}" class="brand-link">
+            <span class="brand-icon">⚔️</span>
+            <span class="brand-name">Java Hero Cards</span>
+        </a>
+    </div>
+    <div class="nav-links">
+        <a th:href="@{/roadmap}" class="nav-link">
+            <span class="nav-icon">🗺️</span> Roadmap
+        </a>
+        <a th:href="@{/collection}" class="nav-link">
+            <span class="nav-icon">📚</span> Collection
+        </a>
+    </div>
+</nav>
+
+<main class="main-content">
+    <section class="hero-section">
+        <div class="hero-section-inner fade-in">
+            <h1 class="hero-title">
+                <span class="title-line">Master Java.</span>
+                <span class="title-line title-line--accent">Collect Heroes.</span>
+            </h1>
+            <p class="hero-subtitle">
+                Unlock 23 Java concept heroes by answering quiz questions.<br>
+                Level up from Bronze to Spring Master.
+            </p>
+            <a th:href="@{/roadmap}" class="btn btn-primary btn-large">
+                ⚔️ Start Learning
+            </a>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="features-grid">
+
+            <div class="feature-card slide-up" style="animation-delay: 0.1s">
+                <div class="feature-icon">🃏</div>
+                <h2 class="feature-title">Collect Heroes</h2>
+                <p class="feature-desc">
+                    Learn Java by collecting powerful hero cards. Each card represents
+                    one core concept — from variables to Spring beans.
+                </p>
+            </div>
+
+            <div class="feature-card slide-up" style="animation-delay: 0.2s">
+                <div class="feature-icon">🧠</div>
+                <h2 class="feature-title">Gain Skills</h2>
+                <p class="feature-desc">
+                    Each hero teaches one concept with a clear explanation,
+                    a real code example, and three quiz questions.
+                </p>
+            </div>
+
+            <div class="feature-card slide-up" style="animation-delay: 0.3s">
+                <div class="feature-icon">🏆</div>
+                <h2 class="feature-title">Complete Your Deck</h2>
+                <p class="feature-desc">
+                    Unlock every hero across all four paths — Bronze, Silver, Gold,
+                    and Spring Master — to master Java completely.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="paths-preview">
+        <h2 class="section-title">Four Learning Paths</h2>
+        <div class="paths-grid">
+            <div class="path-badge bronze">
+                <span class="path-badge-icon">🥉</span>
+                <span>Bronze</span>
+                <small>7 heroes</small>
+            </div>
+            <div class="path-badge silver">
+                <span class="path-badge-icon">🥈</span>
+                <span>Silver</span>
+                <small>5 heroes</small>
+            </div>
+            <div class="path-badge gold">
+                <span class="path-badge-icon">🥇</span>
+                <span>Gold</span>
+                <small>6 heroes</small>
+            </div>
+            <div class="path-badge spring-master">
+                <span class="path-badge-icon">🌱</span>
+                <span>Spring Master</span>
+                <small>5 heroes</small>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>Java Hero Cards &mdash; Learn Java, one hero at a time.</p>
+</footer>
+
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/card-flip.js}"></script>
+</body>
+</html>

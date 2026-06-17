@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'Quiz: ' + ${hero.name} + ' | Java Hero Cards'">Hero Quiz</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/cards.css}">
+    <link rel="stylesheet" th:href="@{/css/animations.css}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-brand">
+        <a th:href="@{/welcome}" class="brand-link">
+            <span class="brand-icon">⚔️</span>
+            <span class="brand-name">Java Hero Cards</span>
+        </a>
+    </div>
+    <div class="nav-links">
+        <a th:href="@{/roadmap}" class="nav-link">
+            <span class="nav-icon">🗺️</span> Roadmap
+        </a>
+        <a th:href="@{/collection}" class="nav-link">
+            <span class="nav-icon">📚</span> Collection
+        </a>
+    </div>
+</nav>
+
+<main class="main-content">
+    <div class="quiz-page fade-in">
+
+        <div class="quiz-header">
+            <a th:href="@{'/hero/' + ${hero.id} + '/learn'}" class="breadcrumb-link">
+                ← Back to Learn
+            </a>
+            <h1 class="quiz-title">
+                Quiz: <span th:text="${hero.name}">Hero Name</span>
+            </h1>
+            <p class="quiz-subtitle">Answer all questions correctly to unlock this hero!</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="quiz-error-banner" th:if="${quizError}">
+            <span class="quiz-error-icon">❌</span>
+            <span th:text="${quizError}">Error message</span>
+        </div>
+
+        <form th:action="@{'/hero/' + ${hero.id} + '/quiz'}" method="post" class="quiz-form" id="quizForm">
+
+            <div th:each="question, qStat : ${hero.questions}"
+                 class="question-block"
+                 th:id="'question-' + ${qStat.index}">
+
+                <div class="question-number">
+                    Question <span th:text="${qStat.count}">1</span>
+                    of <span th:text="${hero.questions.size()}">3</span>
+                </div>
+
+                <p class="question-text" th:text="${question.text}">Question text?</p>
+
+                <div class="answers-list">
+                    <label th:each="answer, aStat : ${question.answers}"
+                           class="answer-option"
+                           th:for="'answer_' + ${qStat.index} + '_' + ${aStat.index}">
+                        <input type="radio"
+                               th:name="'answer_' + ${qStat.index}"
+                               th:value="${aStat.index}"
+                               th:id="'answer_' + ${qStat.index} + '_' + ${aStat.index}"
+                               class="answer-radio">
+                        <span class="answer-label" th:text="${answer.text}">Answer text</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="quiz-actions">
+                <a th:href="@{'/hero/' + ${hero.id} + '/learn'}" class="btn btn-secondary">
+                    ← Study Again
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    Submit Answers ⚡
+                </button>
+            </div>
+
+        </form>
+    </div>
+</main>
+
+<footer class="footer">
+    <p>Java Hero Cards &mdash; Learn Java, one hero at a time.</p>
+</footer>
+
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/card-flip.js}"></script>
+</body>
+</html>
