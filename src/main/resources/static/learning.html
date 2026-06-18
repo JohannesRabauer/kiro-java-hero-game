@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Hero Cards - Learning</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/learning.css">
+</head>
+<body>
+    <!-- Intro Animation -->
+    <div id="intro-animation" class="intro-animation-container">
+        <div class="intro-animation-content">
+            <div class="hero-glow"></div>
+            <h1 id="intro-hero-name" class="intro-hero-name"></h1>
+            <p id="intro-concept" class="intro-concept"></p>
+        </div>
+    </div>
+
+    <!-- Learning Content -->
+    <div id="learning-content" class="learning-container" style="display: none;">
+        <header class="learning-header">
+            <h1 id="hero-title" class="hero-title"></h1>
+        </header>
+
+        <main class="learning-sections">
+            <!-- What it is -->
+            <section class="learning-card" id="section-what">
+                <div class="section-icon">💡</div>
+                <h2 class="section-title">What it is</h2>
+                <p id="what-it-is" class="section-content"></p>
+            </section>
+
+            <!-- Why it matters -->
+            <section class="learning-card" id="section-why">
+                <div class="section-icon">🎯</div>
+                <h2 class="section-title">Why it matters</h2>
+                <p id="why-it-matters" class="section-content"></p>
+            </section>
+
+            <!-- How to use it -->
+            <section class="learning-card" id="section-how">
+                <div class="section-icon">🛠️</div>
+                <h2 class="section-title">How to use it</h2>
+                <p id="how-to-use-it" class="section-content"></p>
+            </section>
+
+            <!-- Code Examples -->
+            <section class="learning-card code-section" id="section-code">
+                <div class="section-icon">📝</div>
+                <h2 class="section-title">Code Examples</h2>
+                <div id="code-examples"></div>
+            </section>
+        </main>
+
+        <!-- Start Quiz Button -->
+        <footer class="learning-footer">
+            <button id="start-quiz-btn" class="start-quiz-button">Start Quiz →</button>
+        </footer>
+    </div>
+
+    <!-- Error State -->
+    <div id="error-state" class="error-container" style="display: none;">
+        <p class="error-message" id="error-message">Failed to load content.</p>
+        <button id="retry-btn" class="retry-button">Retry</button>
+    </div>
+
+    <script src="js/learning.js"></script>
+</body>
+</html>

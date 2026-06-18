@@ -70,7 +70,7 @@ This plan implements the Java Hero Cards gamified learning application as a Spri
     - XP awarded equals the fixed value defined for the card's learning path
     - **Validates: Requirements 6.3, 9.3**
 
-- [~] 3. Checkpoint - Core progression logic
+- [x] 3. Checkpoint - Core progression logic
   - Ensure all tests pass, ask the user if questions arise.
 
 - [x] 4. Implement QuizService
@@ -131,7 +131,7 @@ This plan implements the Java Hero Cards gamified learning application as a Spri
     - Serialize then deserialize produces equivalent player state
     - **Validates: Requirements 8.2**
 
-- [~] 7. Checkpoint - All services complete
+- [x] 7. Checkpoint - All services complete
   - Ensure all tests pass, ask the user if questions arise.
 
 - [x] 8. Implement REST API Controllers
@@ -158,8 +158,8 @@ This plan implements the Java Hero Cards gamified learning application as a Spri
     - Test error responses for locked content, invalid hero IDs
     - _Requirements: 8.1, 8.2, 5.3_
 
-- [ ] 9. Implement Frontend - Onboarding and Roadmap Views
-  - [-] 9.1 Implement OnboardingView
+- [x] 9. Implement Frontend - Onboarding and Roadmap Views
+  - [x] 9.1 Implement OnboardingView
     - Create three sequential animations: "Collect Heroes", "Gain Skills", "Complete Your Deck"
     - Implement auto-advance between animations
     - Add skip control to bypass remaining animations
@@ -167,22 +167,22 @@ This plan implements the Java Hero Cards gamified learning application as a Spri
     - Navigate to RoadmapView after onboarding
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5_
 
-  - [-] 9.2 Implement RoadmapView
+  - [x] 9.2 Implement RoadmapView
     - Display four learning paths (Bronze, Silver, Gold, Spring Master) in sequential order
     - Render hero cards with visual states: completed, active, locked
     - Highlight next available hero card with distinct "active" state
     - Display total XP and path completion indicators
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 9.1, 9.2, 9.4_
 
-- [ ] 10. Implement Frontend - Learning and Quiz Views
-  - [-] 10.1 Implement LearningView
+- [x] 10. Implement Frontend - Learning and Quiz Views
+  - [x] 10.1 Implement LearningView
     - Display intro animation (max 5 seconds) with fallback on failure
     - Show concept explanation in three sections: "What it is", "Why it matters", "How to use it"
     - Display Java code examples
     - Provide "Start Quiz" button navigating to QuizView
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5_
 
-  - [-] 10.2 Implement QuizView
+  - [x] 10.2 Implement QuizView
     - Present questions one at a time in sequence
     - Display 3-4 answer options per question
     - Show immediate correct/incorrect feedback (within 1 second)
@@ -191,14 +191,14 @@ This plan implements the Java Hero Cards gamified learning application as a Spri
     - On all correct, call `POST /api/quiz/{heroId}/complete`
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6_
 
-  - [-] 10.3 Implement CardUnlockView
+  - [x] 10.3 Implement CardUnlockView
     - Play flip and shine animation (max 3 seconds)
     - Display unlock confirmation and XP earned
     - Navigate to next available hero or path completion screen
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
 
-- [ ] 11. Implement Frontend - Collection View
-  - [~] 11.1 Implement CollectionView
+- [x] 11. Implement Frontend - Collection View
+  - [x] 11.1 Implement CollectionView
     - Display grid of unlocked cards with hero name, concept title, and tier badge
     - Implement card flip animation showing back (concept explanation + code example)
     - Implement zoom/enlarged view with full content
@@ -208,28 +208,28 @@ This plan implements the Java Hero Cards gamified learning application as a Spri
     - Display empty state message directing to Roadmap when no cards unlocked
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7_
 
-- [ ] 12. Implement XP display and real-time updates
-  - [~] 12.1 Implement real-time XP tracking in frontend
+- [x] 12. Implement XP display and real-time updates
+  - [x] 12.1 Implement real-time XP tracking in frontend
     - Display total XP in RoadmapView, updated within same session without page reload
     - Update XP display immediately after quiz completion
     - Show zero XP for new players
     - _Requirements: 9.1, 9.2, 9.3, 9.4_
 
-- [ ] 13. Implement error handling and persistence fallbacks
-  - [~] 13.1 Implement persistence retry and fallback UI
+- [x] 13. Implement error handling and persistence fallbacks
+  - [x] 13.1 Implement persistence retry and fallback UI
     - Show non-blocking notification on save failure
     - Retain unsaved progress in client session state
     - Implement retry indicator during save attempts
     - _Requirements: 8.3, 8.4_
 
-  - [~] 13.2 Implement animation and content loading error handling
+  - [x] 13.2 Implement animation and content loading error handling
     - Skip intro animation on load failure, show content directly
     - Show retry button on content load failure
     - Navigate back to learning view on quiz load failure with error notification
     - Static confirmation fallback for unlock animation failure
     - _Requirements: 4.5_
 
-- [~] 14. Final checkpoint - Full integration
+- [x] 14. Final checkpoint - Full integration
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes

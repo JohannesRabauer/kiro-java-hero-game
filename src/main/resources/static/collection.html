@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Hero Cards - Collection</title>
+    <link rel="stylesheet" href="/css/collection.css">
+</head>
+<body>
+    <div class="collection-header">
+        <h1>&#x1F0CF; My Card Collection</h1>
+        <a href="roadmap.html" class="nav-link">&#9876;&#65039; Roadmap</a>
+    </div>
+
+    <div id="filter-bar" class="filter-bar" style="display: none;">
+        <button class="filter-btn active" data-filter="ALL">All</button>
+        <button class="filter-btn" data-filter="BRONZE">
+            <span class="filter-badge bronze"></span> Bronze <span class="filter-progress" data-path="BRONZE"></span>
+        </button>
+        <button class="filter-btn" data-filter="SILVER">
+            <span class="filter-badge silver"></span> Silver <span class="filter-progress" data-path="SILVER"></span>
+        </button>
+        <button class="filter-btn" data-filter="GOLD">
+            <span class="filter-badge gold"></span> Gold <span class="filter-progress" data-path="GOLD"></span>
+        </button>
+        <button class="filter-btn" data-filter="SPRING_MASTER">
+            <span class="filter-badge spring"></span> Spring Master <span class="filter-progress" data-path="SPRING_MASTER"></span>
+        </button>
+    </div>
+
+    <div id="loading" class="loading">Loading your collection...</div>
+    <div id="error" class="error-message" style="display: none;"></div>
+    <div id="empty-state" class="empty-state" style="display: none;">
+        <div class="empty-icon">&#x1F4E6;</div>
+        <p>No cards collected yet! Visit the <a href="roadmap.html">Roadmap</a> to start learning.</p>
+    </div>
+    <div id="cards-container" class="cards-container" style="display: none;"></div>
+
+    <!-- Modal overlay for enlarged view -->
+    <div id="card-modal" class="card-modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="modal-body" class="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="/js/collection.js"></script>
+</body>
+</html>

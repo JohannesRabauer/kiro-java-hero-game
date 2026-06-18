@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Hero Cards - Card Unlocked!</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/unlock.css">
+</head>
+<body>
+    <!-- Loading State -->
+    <div id="loading" class="loading">Loading...</div>
+
+    <!-- Unlock Animation Container -->
+    <div id="unlock-container" class="unlock-container" style="display: none;">
+        <!-- Card Flip Animation -->
+        <div id="card-flip" class="card-flip-wrapper">
+            <div class="card-3d">
+                <div class="card-face card-back">
+                    <div class="card-back-pattern">
+                        <div class="card-back-logo">⚔️</div>
+                        <div class="card-back-title">Java Hero</div>
+                    </div>
+                </div>
+                <div class="card-face card-front">
+                    <div class="card-front-content">
+                        <div id="card-tier-badge" class="card-tier-badge"></div>
+                        <div class="card-hero-icon">🦸</div>
+                        <h2 id="card-hero-name" class="card-hero-name"></h2>
+                        <p id="card-concept-title" class="card-concept-title"></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Shine overlay -->
+            <div class="shine-overlay"></div>
+        </div>
+
+        <!-- Confirmation Section (shown after animation) -->
+        <div id="unlock-confirmation" class="unlock-confirmation" style="display: none;">
+            <h1 class="unlock-title">🎉 Card Unlocked!</h1>
+            <p id="confirm-hero-name" class="confirm-hero-name"></p>
+            <p id="confirm-concept" class="confirm-concept"></p>
+
+            <!-- XP Badge -->
+            <div class="xp-section">
+                <div id="xp-earned" class="xp-earned-badge"></div>
+                <div id="total-xp" class="total-xp"></div>
+            </div>
+
+            <!-- Path Completion Message (conditionally shown) -->
+            <div id="path-complete-msg" class="path-complete-msg" style="display: none;"></div>
+
+            <!-- Continue Button -->
+            <button id="continue-btn" class="continue-button">Continue →</button>
+        </div>
+    </div>
+
+    <!-- Error State -->
+    <div id="error-state" class="error-container" style="display: none;">
+        <p class="error-message" id="error-message">Something went wrong.</p>
+        <button id="retry-btn" class="retry-button">Retry</button>
+    </div>
+
+    <script src="js/unlock.js"></script>
+</body>
+</html>

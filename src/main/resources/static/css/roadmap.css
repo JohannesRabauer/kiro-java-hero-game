@@ -1,0 +1,262 @@
+/* Roadmap View Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    color: #e0e0e0;
+    padding: 2rem;
+}
+
+.roadmap-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.roadmap-header h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.xp-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 215, 0, 0.15);
+    border: 2px solid #FFD700;
+    border-radius: 2rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.xp-display .xp-icon {
+    font-size: 1.5rem;
+}
+
+.roadmap-nav {
+    margin-top: 0.75rem;
+}
+
+.roadmap-nav .nav-link {
+    display: inline-block;
+    color: #42a5f5;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(66, 165, 245, 0.4);
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+}
+
+.roadmap-nav .nav-link:hover {
+    background: rgba(66, 165, 245, 0.15);
+    border-color: #42a5f5;
+}
+
+.paths-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.path-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s;
+}
+
+.path-section:hover {
+    transform: translateY(-2px);
+}
+
+.path-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.path-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.tier-badge {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.tier-badge.bronze { background: #CD7F32; box-shadow: 0 0 8px #CD7F32; }
+.tier-badge.silver { background: #C0C0C0; box-shadow: 0 0 8px #C0C0C0; }
+.tier-badge.gold { background: #FFD700; box-shadow: 0 0 8px #FFD700; }
+.tier-badge.spring { background: #6DB33F; box-shadow: 0 0 8px #6DB33F; }
+
+.path-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.path-progress {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.path-completed-badge {
+    background: #4CAF50;
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+.hero-card-tile {
+    position: relative;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.hero-card-tile.completed {
+    border-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.hero-card-tile.completed::after {
+    content: '\2713';
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    background: #4CAF50;
+    color: white;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.hero-card-tile.active {
+    border-color: #42a5f5;
+    background: rgba(66, 165, 245, 0.15);
+    cursor: pointer;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 20px rgba(66, 165, 245, 0.3);
+}
+
+.hero-card-tile.active:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(66, 165, 245, 0.5);
+}
+
+.hero-card-tile.locked {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    opacity: 0.5;
+}
+
+.hero-card-tile.locked .card-icon {
+    color: #666;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px rgba(66, 165, 245, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(66, 165, 245, 0.6); }
+    100% { box-shadow: 0 0 10px rgba(66, 165, 245, 0.3); }
+}
+
+.card-icon {
+    font-size: 1.8rem;
+}
+
+.card-name {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.card-concept {
+    font-size: 0.7rem;
+    color: #aaa;
+}
+
+.lock-icon {
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.loading {
+    text-align: center;
+    padding: 4rem;
+    font-size: 1.2rem;
+    color: #aaa;
+}
+
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    border-radius: 0.5rem;
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+.connector {
+    width: 2px;
+    height: 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 1rem;
+    }
+
+    .roadmap-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+}
